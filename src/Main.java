@@ -8,7 +8,7 @@ public class Main {
     public static SEGUIHandler gui;
 
     public static void main(String args[]) {
-        System.out.println("DDSE v1.0");
+        System.out.println("DDSE v1.1");
 
         FileHandler.readTemplateFile();
         EventQueue.invokeLater(() -> {

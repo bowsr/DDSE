@@ -28,7 +28,7 @@ public class SEGUIHandler {
 
     public static SEGUIHandler instance;
 
-    private static final String PROGRAM_TITLE = "DDSE v1.0";
+    private static final String PROGRAM_TITLE = "DDSE v1.1";
     private static final double START_RADIUS = 50.0000038;
     private static final double FINAL_RADIUS = 20.0;
     private static final double SHRINK_RATE = 0.025;

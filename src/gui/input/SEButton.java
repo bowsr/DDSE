@@ -79,7 +79,9 @@ public class SEButton extends JButton{
                 int confirm = JOptionPane.showConfirmDialog(c, "Overwrite existing file?");
                 if(confirm == JFileChooser.APPROVE_OPTION)
                     FileHandler.writeNewSpawnsetFile(c.getSelectedFile());
+                return;
             }
+            FileHandler.writeNewSpawnsetFile(c.getSelectedFile());
         }
     }
 

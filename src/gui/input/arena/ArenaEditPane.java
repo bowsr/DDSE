@@ -119,6 +119,8 @@ public class ArenaEditPane extends SEPanel {
         }
 
         void toggle() {
+            if(data.height >= 0f) disableTile();
+            else enableTile();
         }
 
         void enableTile() {
