@@ -125,12 +125,14 @@ public class ArenaEditPane extends SEPanel {
 
         void enableTile() {
             setBackground(enabledBG);
-            data.height = template[data.x][data.y];
+            float t = template[data.x][data.y];
+            data.height = (t < 0f) ? 0.0136f : t;
         }
 
         void disableTile() {
             setBackground(defaultBG);
-            data.height = -1007.57031f;
+            float t = template[data.x][data.y];
+            data.height = (t >= 0f) ? -1007.57031f : t;
         }
 
         public Dimension getPreferredSize() {
