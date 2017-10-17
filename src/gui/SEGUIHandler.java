@@ -6,6 +6,7 @@ import gui.input.SEButton;
 import gui.input.SECheckBox;
 import gui.input.SESpinner;
 import gui.input.arena.ArenaEditPane;
+import resource.Resources;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -28,7 +29,7 @@ public class SEGUIHandler {
 
     public static SEGUIHandler instance;
 
-    private static final String PROGRAM_TITLE = "DDSE v1.11";
+    private static final String PROGRAM_TITLE = "DDSE " + Resources.PROGRAM_VERSION;
     private static final double START_RADIUS = 50.0000038;
     private static final double FINAL_RADIUS = 20.0;
     private static final double SHRINK_RATE = 0.025;
