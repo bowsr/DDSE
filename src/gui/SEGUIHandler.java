@@ -20,7 +20,7 @@ public class SEGUIHandler {
     public SEList list;
     public SEListModel elm;
     public ArrayList<SECheckBox> enemySelections;
-    public SEButton addButton, deleteButton, clearButton, exitButton, createButton, openButton, editDelayButton, editEnemyType;
+    public SEButton addButton, deleteButton, clearButton, exitButton, createButton, openButton, editDelayButton, editEnemyType, addAfterButton;
     public JTextPane titleText, listTitles, arenaTitle;
     public JComboBox combo;
     public JSpinner delayspin, spinBrightness, radiusStart, radiusFinal, shrinkRate;
@@ -69,9 +69,6 @@ public class SEGUIHandler {
 
     private void initializeButtonsAndInputs() {
         addButton = new SEButton("Add Spawns", 100, 25, "add_selected");
-        deleteButton = new SEButton("Delete", 80, 25, "delete_entry");
-        deleteButton.setEnabled(false);
-        clearButton = new SEButton("Clear", 80, 25, "clear_list");
         exitButton = new SEButton("Exit", 80, 25, "exit");
         exitButton.setBackground(new Color(167, 84, 75));
         exitButton.setBorder(BorderFactory.createLineBorder(new Color(20, 20, 20)));
@@ -81,10 +78,15 @@ public class SEGUIHandler {
         openButton = new SEButton("Open File", 120, 25, "open_file");
         openButton.setBackground(new Color(62, 134, 159));
         openButton.setBorder(BorderFactory.createLineBorder(new Color(30, 30, 30)));
-        editDelayButton = new SEButton("Edit Delay", 120, 25, "edit_delay");
+        deleteButton = new SEButton("Delete", 72, 25, "delete_entry");
+        deleteButton.setEnabled(false);
+        clearButton = new SEButton("Clear", 72, 25, "clear_list");
+        editDelayButton = new SEButton("Edit Delay", 72, 25, "edit_delay");
         editDelayButton.setEnabled(false);
-        editEnemyType = new SEButton("Edit Enemy", 120, 25, "edit_enemy");
+        editEnemyType = new SEButton("Edit Enemy", 72, 25, "edit_enemy");
         editEnemyType.setEnabled(false);
+        addAfterButton = new SEButton("Add After", 72, 25, "add_after");
+        addAfterButton.setEnabled(false);
 
         chooser = new JFileChooser(System.getProperty("user.dir"));
     }
@@ -105,9 +107,10 @@ public class SEGUIHandler {
         Font cb_font = enemySelections.get(0).getFont();
 
         modify = new SEPanel(new FlowLayout());
-        modify.add(deleteButton);
+        modify.add(addAfterButton);
         modify.add(editEnemyType);
         modify.add(editDelayButton);
+        modify.add(deleteButton);
         modify.add(clearButton);
 
         left = new SEPanel();
@@ -317,10 +320,15 @@ public class SEGUIHandler {
                 deleteButton.setEnabled(false);
                 editDelayButton.setEnabled(false);
                 editEnemyType.setEnabled(false);
+                addAfterButton.setEnabled(false);
             }else {
                 deleteButton.setEnabled(true);
                 editDelayButton.setEnabled(true);
                 if(SECheckBox.singleSelection) editEnemyType.setEnabled(true);
+                if(list.getSelectedIndices().length == 1)
+                    addAfterButton.setEnabled(true);
+                else
+                    addAfterButton.setEnabled(false);
             }
         }
     }

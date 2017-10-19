@@ -47,6 +47,8 @@ public class SEButton extends JButton{
                              break;
         case "edit_enemy":   editEnemy();
                              break;
+        case "add_after":    addAfter();
+                             break;
         default: break;
         }
     }
@@ -102,13 +104,27 @@ public class SEButton extends JButton{
         }
     }
 
+    private void addAfter() {
+        int delay = (int) SEGUIHandler.instance.delayspin.getValue(),
+            index = SEGUIHandler.instance.list.getSelectedIndex();
+        SECheckBox tmp;
+        for(int i = 0; i < SEGUIHandler.instance.enemySelections.size(); i++) {
+            tmp = SEGUIHandler.instance.enemySelections.get(i);
+            if(tmp.isSelected()) {
+                SEGUIHandler.instance.elm.addEnemy(index + 1, tmp.getID(), delay);
+                index++;
+                delay = 0;
+            }
+        }
+    }
+
     private void addSelection() {
         int delay = (int) SEGUIHandler.instance.delayspin.getValue();
         SECheckBox tmp;
         for(int i = 0; i < SEGUIHandler.instance.enemySelections.size(); i++) {
             tmp = SEGUIHandler.instance.enemySelections.get(i);
             if(tmp.isSelected()) {
-                SEGUIHandler.instance.elm.addElement(tmp.getID(), delay);
+                SEGUIHandler.instance.elm.addEnemy(tmp.getID(), delay);
                 delay = 0;
             }
         }

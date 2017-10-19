@@ -12,10 +12,14 @@ public class SEListModel extends DefaultListModel<Enemy> {
         super();
     }
 
-    public void addElement(int enemy, int delay) {
+    public void addEnemy(int enemy, int delay) {
+        addEnemy(getSize(), enemy, delay);
+    }
+
+    public void addEnemy(int index, int enemy, int delay) {
         Enemy ed = new Enemy(enemy, delay);
         ed.setRelativeSpawnTime((getSize() > 0) ? (get(getSize() - 1).getRelativeSpawnTime() + delay) : delay);
-        super.addElement(ed);
+        super.add(index, ed);
         updateLast17();
     }
 
@@ -35,7 +39,7 @@ public class SEListModel extends DefaultListModel<Enemy> {
             id = BitConverter.toInt(tmp);
             System.arraycopy(buffer, i + 4, tmp, 0, 4);
             delay = (int) BitConverter.toSingle(tmp);
-            addElement(id, delay);
+            addEnemy(id, delay);
         }
     }
 
