@@ -10,7 +10,7 @@ import java.io.File;
 
 public class SEButton extends JButton{
 
-    public SEButton(String text) {
+    private SEButton(String text) {
         super(text);
         setFocusPainted(false);
         setBackground(new Color(66, 69, 75));
@@ -19,7 +19,7 @@ public class SEButton extends JButton{
         addActionListener(this::actionPerformed);
     }
 
-    public SEButton(String text, int width, int height) {
+    private SEButton(String text, int width, int height) {
         this(text);
         setPreferredSize(new Dimension(width, height));
         setSize(new Dimension(width, height));
@@ -30,9 +30,9 @@ public class SEButton extends JButton{
         setActionCommand(actionCmd);
     }
 
-    public void actionPerformed(ActionEvent e) {
+    private void actionPerformed(ActionEvent e) {
         switch(e.getActionCommand()) {
-        case "exit": System.exit(0);
+        case "exit":         System.exit(0);
         case "clear_list":   clearConfirmationDialog();
                              break;
         case "delete_entry": deleteSelection();
@@ -45,8 +45,25 @@ public class SEButton extends JButton{
                              break;
         case "edit_delay":   editDelay();
                              break;
+        case "edit_enemy":   editEnemy();
+                             break;
         default: break;
         }
+    }
+
+    private void editEnemy() {
+        int enemy = -500;
+        for(SECheckBox check: SEGUIHandler.instance.enemySelections)
+            if(check.isSelected())
+                enemy = check.getID();
+
+        if(enemy == -500) return;
+
+        int[] indices = SEGUIHandler.instance.list.getSelectedIndices();
+        for(int index: indices)
+            SEGUIHandler.instance.elm.get(index).setID(enemy);
+
+        SEGUIHandler.instance.list.clearSelection();
     }
 
     private void editDelay() {

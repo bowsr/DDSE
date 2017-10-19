@@ -20,7 +20,7 @@ public class SEGUIHandler {
     public SEList list;
     public SEListModel elm;
     public ArrayList<SECheckBox> enemySelections;
-    public SEButton addButton, deleteButton, clearButton, exitButton, createButton, openButton, editDelayButton;
+    public SEButton addButton, deleteButton, clearButton, exitButton, createButton, openButton, editDelayButton, editEnemyType;
     public JTextPane titleText, listTitles, arenaTitle;
     public JComboBox combo;
     public JSpinner delayspin, spinBrightness, radiusStart, radiusFinal, shrinkRate;
@@ -81,8 +81,10 @@ public class SEGUIHandler {
         openButton = new SEButton("Open File", 120, 25, "open_file");
         openButton.setBackground(new Color(62, 134, 159));
         openButton.setBorder(BorderFactory.createLineBorder(new Color(30, 30, 30)));
-        editDelayButton = new SEButton("Edit Selected Delay", 120, 25, "edit_delay");
+        editDelayButton = new SEButton("Edit Delay", 120, 25, "edit_delay");
         editDelayButton.setEnabled(false);
+        editEnemyType = new SEButton("Edit Enemy", 120, 25, "edit_enemy");
+        editEnemyType.setEnabled(false);
 
         chooser = new JFileChooser(System.getProperty("user.dir"));
     }
@@ -102,10 +104,11 @@ public class SEGUIHandler {
 
         Font cb_font = enemySelections.get(0).getFont();
 
-        modify = new SEPanel(new BorderLayout());
-        modify.add(deleteButton, BorderLayout.LINE_START);
-        modify.add(editDelayButton, BorderLayout.CENTER);
-        modify.add(clearButton, BorderLayout.LINE_END);
+        modify = new SEPanel(new FlowLayout());
+        modify.add(deleteButton);
+        modify.add(editEnemyType);
+        modify.add(editDelayButton);
+        modify.add(clearButton);
 
         left = new SEPanel();
         left.setLayout(new BoxLayout(left, BoxLayout.PAGE_AXIS));
@@ -313,9 +316,11 @@ public class SEGUIHandler {
             if(list.getSelectedIndex() == -1) {
                 deleteButton.setEnabled(false);
                 editDelayButton.setEnabled(false);
+                editEnemyType.setEnabled(false);
             }else {
                 deleteButton.setEnabled(true);
                 editDelayButton.setEnabled(true);
+                if(SECheckBox.singleSelection) editEnemyType.setEnabled(true);
             }
         }
     }

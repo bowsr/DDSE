@@ -19,11 +19,11 @@ public class Enemy {
     }
 
     public byte[] convertIdentifier() {
-        return BitConverter.getBytes(identifier);
+        return BitConverter.getBytes(getID());
     }
 
     public byte[] convertDelay() {
-        return BitConverter.getBytes((float)delay);
+        return BitConverter.getBytes((float)getDelay());
     }
 
     public byte[] getBytes() {
@@ -36,6 +36,10 @@ public class Enemy {
 
     public int getID() {
         return identifier;
+    }
+
+    public void setID(int id) {
+        identifier = id;
     }
 
     public int getDelay() {
