@@ -74,7 +74,7 @@ public class SEButton extends JButton{
         for(int index: indices)
             SEGUIHandler.instance.elm.get(index).setDelay(delay);
 
-        SEGUIHandler.instance.elm.updateSpawnTimes();
+        SEGUIHandler.instance.elm.updateListDisplay();
         SEGUIHandler.instance.list.clearSelection();
     }
 

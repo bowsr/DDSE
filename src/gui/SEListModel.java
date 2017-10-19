@@ -18,15 +18,14 @@ public class SEListModel extends DefaultListModel<Enemy> {
 
     public void addEnemy(int index, int enemy, int delay) {
         Enemy ed = new Enemy(enemy, delay);
-        ed.setRelativeSpawnTime((getSize() > 0) ? (get(getSize() - 1).getRelativeSpawnTime() + delay) : delay);
+//        ed.setRelativeSpawnTime((getSize() > 0) ? (get(getSize() - 1).getRelativeSpawnTime() + delay) : delay);
         super.add(index, ed);
-        updateLast17();
+        updateListDisplay();
     }
 
     public Enemy remove(int index) {
         Enemy e = super.remove(index);
-        updateSpawnTimes();
-        updateLast17();
+        updateListDisplay();
         return e;
     }
 
@@ -43,17 +42,33 @@ public class SEListModel extends DefaultListModel<Enemy> {
         }
     }
 
-    public void updateSpawnTimes() {
+    public void updateListDisplay() {
+        updateGemCounts();
+        updateSpawnTimes();
+        updateLast17();
+    }
+
+    private void updateGemCounts() {
+        for(int i = 0; i < getSize(); i++) {
+            get(i).setGems((i == 0) ? 0 : get(i - 1).getRelativeGemCount());
+        }
+    }
+
+    private void updateSpawnTimes() {
         for(int i = 0; i < getSize(); i++) {
             get(i).setRelativeSpawnTime((i == 0) ? get(i).getDelay() : get(i - 1).getRelativeSpawnTime() + get(i).getDelay());
         }
     }
 
     private void updateLast17() {
-        if(getSize() < 17) return;
         for(int i = getSize() - 1; i >= 0; i--) {
-            if(i >= getSize() - 17) get(i).setLast17(true);
-            else get(i).setLast17(false);
+            if(getSize() < 17)
+                get(i).setLast17(false);
+            else
+                if(i >= getSize() - 17)
+                    get(i).setLast17(true);
+                else
+                    get(i).setLast17(false);
         }
     }
 }

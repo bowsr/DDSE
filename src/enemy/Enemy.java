@@ -10,6 +10,7 @@ public class Enemy {
     private int delay;
 
     private int relativeSpawnTime;
+    private int relativeGemCount;
 
     private boolean isLast17 = false;
 
@@ -54,6 +55,18 @@ public class Enemy {
         relativeSpawnTime = sec;
     }
 
+    public int getRelativeGemCount() {
+        return relativeGemCount;
+    }
+
+    public void setRelativeGemCount(int gems) {
+        relativeGemCount = gems;
+    }
+
+    public void setGems(int gems) {
+        setRelativeGemCount(gems + getEnemyGems());
+    }
+
     public void setLast17(boolean flag) {
         isLast17 = flag;
     }
@@ -62,8 +75,8 @@ public class Enemy {
         this.delay = delay;
     }
 
-    private String convertID(int enemy) {
-        switch(enemy) {
+    private String convertID() {
+        switch(identifier) {
         case 0: return "SQUID I";
         case 1: return "SQUID II";
         case 2: return "CENTIPEDE";
@@ -76,26 +89,43 @@ public class Enemy {
         case 9: return "GHOSTPEDE";
         case -1: return "EMPTY";
         default:
-            throw new InvalidParameterException("There is no enemy spawn with ID " + enemy);
+            throw new InvalidParameterException("There is no enemy spawn with ID " + identifier);
+        }
+    }
+
+    private int getEnemyGems() {
+        switch(identifier) {
+        case 0:  return 2;
+        case 1:  return 3;
+        case 2:  return 25;
+        case 3:  return 1;
+        case 4:  return 6;
+        case 5:  return 50;
+        case 6:  return 3;
+        case 8:  return 1;
+        case 9:  return 10;
+        default: return 0;
         }
     }
 
     public String toString() {
-        StringBuilder s = new StringBuilder(convertID(identifier));
-        for(int i = s.toString().length(); i <= 18; i++) {
+        StringBuilder s = new StringBuilder(convertID());
+        for(int i = s.toString().length(); i <= 17; i++) {
             s.append(' ');
         }
         s.append(delay);
-        for(int j = Integer.toString(delay).length(); j <= 12; j++) {
+        for(int j = Integer.toString(delay).length(); j <= 9; j++) {
             s.append(' ');
         }
         s.append(relativeSpawnTime);
-        if(isLast17) {
-            for(int k = Integer.toString(relativeSpawnTime).length(); k <= 10; k++) {
-                s.append(' ');
-            }
-            s.append('\u2713');
+        for(int k = Integer.toString(relativeSpawnTime).length(); k <= 12; k++) {
+            s.append(' ');
         }
+        if(isLast17) s.append('\u2713');
+        else s.append(' ');
+        for(int l = 0; l <= 11; l++)
+            s.append(' ');
+        s.append(getRelativeGemCount());
         return s.toString();
     }
 }

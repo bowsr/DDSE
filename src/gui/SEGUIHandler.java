@@ -78,14 +78,14 @@ public class SEGUIHandler {
         openButton = new SEButton("Open File", 120, 25, "open_file");
         openButton.setBackground(new Color(62, 134, 159));
         openButton.setBorder(BorderFactory.createLineBorder(new Color(30, 30, 30)));
-        deleteButton = new SEButton("Delete", 72, 25, "delete_entry");
+        deleteButton = new SEButton("Delete", 80, 25, "delete_entry");
         deleteButton.setEnabled(false);
-        clearButton = new SEButton("Clear", 72, 25, "clear_list");
-        editDelayButton = new SEButton("Edit Delay", 72, 25, "edit_delay");
+        clearButton = new SEButton("Clear", 80, 25, "clear_list");
+        editDelayButton = new SEButton("Edit Delay", 80, 25, "edit_delay");
         editDelayButton.setEnabled(false);
-        editEnemyType = new SEButton("Edit Enemy", 72, 25, "edit_enemy");
+        editEnemyType = new SEButton("Edit Enemy", 80, 25, "edit_enemy");
         editEnemyType.setEnabled(false);
-        addAfterButton = new SEButton("Add After", 72, 25, "add_after");
+        addAfterButton = new SEButton("Add After", 80, 25, "add_after");
         addAfterButton.setEnabled(false);
 
         chooser = new JFileChooser(System.getProperty("user.dir"));
@@ -145,7 +145,7 @@ public class SEGUIHandler {
         listTitles.setForeground(Color.WHITE);
         listTitles.setBackground(new Color(43, 43, 43));
         listTitles.setBorder(BorderFactory.createEmptyBorder());
-        listTitles.setText("Enemy Type     Delay   Spawn Time   Repeated (Last 17)");
+        listTitles.setText("Enemy Type     Delay   Spawn Time     End Loop    Gems (No Farm)");
 
         left.add(listTitles);
         left.add(jsp);
@@ -183,13 +183,13 @@ public class SEGUIHandler {
         exit.add(openButton);
         exit.add(exitButton);
 
-        radiusStart = new SESpinner(START_RADIUS, 12.0, 200.0, 0.25);
+        radiusStart = new SESpinner(START_RADIUS, 6.0, 2000.0, 0.25);
         radiusStart.setPreferredSize(new Dimension(30, 25));
-        radiusFinal = new SESpinner(FINAL_RADIUS, 12.0, 200.0, 0.25);
+        radiusFinal = new SESpinner(FINAL_RADIUS, 6.0, 2000.0, 0.25);
         radiusFinal.setPreferredSize(new Dimension(30, 25));
         spinBrightness = new SESpinner(BRIGHTNESS, 0.0, 300.0, 1.0);
         spinBrightness.setPreferredSize(new Dimension(30, 25));
-        shrinkRate = new SESpinner(SHRINK_RATE, 0.0, 1.0, 0.005);
+        shrinkRate = new SESpinner(SHRINK_RATE, 0.0, 5.0, 0.005);
         shrinkRate.setPreferredSize(new Dimension(30, 25));
 
         SETextPane rStartText = new SETextPane();
