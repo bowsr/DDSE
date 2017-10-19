@@ -135,7 +135,7 @@ public class SEGUIHandler {
 
         titleBar = new SEPanel(new FlowLayout());
         titleBar.add(titleText);
-        titleBar.add(createFiller(815, 24));
+        titleBar.add(createFiller(885, 24));
         titleBar.add(arenaTitle);
         titleBar.add(createFiller(200, 24));
 
