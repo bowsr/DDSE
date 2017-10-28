@@ -165,7 +165,7 @@ public class SEGUIHandler {
 
         SETextPane lastSpawns = new SETextPane();
         lastSpawns.setFont(enemySelections.get(0).getFont());
-        lastSpawns.setText("Last 17 Repeating Spawns: ");
+        lastSpawns.setText("End Loop Repeating Spawns: ");
 
         SETextPane directory = new SETextPane();
         directory.setFont(enemySelections.get(0).getFont());
