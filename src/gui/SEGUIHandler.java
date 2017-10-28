@@ -135,7 +135,7 @@ public class SEGUIHandler {
 
         titleBar = new SEPanel(new FlowLayout());
         titleBar.add(titleText);
-        titleBar.add(createFiller(885, 24));
+        titleBar.add(createFiller(905, 24));
         titleBar.add(arenaTitle);
         titleBar.add(createFiller(200, 24));
 
@@ -281,7 +281,7 @@ public class SEGUIHandler {
         new SECheckBox("GHOSTPEDE", 9, pedes, enemySelections);
         new SECheckBox("EMPTY", -1, other, enemySelections);
 
-        String[] options = {"Default", "Empty", "Last 17 - Fill with EMPTY as needed"};
+        String[] options = {"Default", "Empty"};
         combo = new JComboBox<>(options);
         combo.setEditable(false);
         combo.setSelectedIndex(0);

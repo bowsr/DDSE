@@ -45,7 +45,7 @@ public class SEListModel extends DefaultListModel<Enemy> {
     public void updateListDisplay() {
         updateGemCounts();
         updateSpawnTimes();
-        updateLast17();
+        updateEndLoop();
     }
 
     private void updateGemCounts() {
@@ -60,15 +60,11 @@ public class SEListModel extends DefaultListModel<Enemy> {
         }
     }
 
-    private void updateLast17() {
+    private void updateEndLoop() {
+        boolean repeat = true;
         for(int i = getSize() - 1; i >= 0; i--) {
-            if(getSize() < 17)
-                get(i).setLast17(false);
-            else
-                if(i >= getSize() - 17)
-                    get(i).setLast17(true);
-                else
-                    get(i).setLast17(false);
+            get(i).setRepeat(repeat);
+            if(repeat && get(i).getID() == -1) repeat = false;
         }
     }
 }

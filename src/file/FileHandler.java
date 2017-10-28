@@ -115,9 +115,7 @@ public class FileHandler {
         int totalEnemies = SEGUIHandler.instance.elm.getSize(), enemy = totalEnemies;
         if(SEGUIHandler.instance.combo.getSelectedIndex() == 1)
             totalEnemies += 17;
-        else if(SEGUIHandler.instance.combo.getSelectedIndex() == 2)
-            if(totalEnemies < 17)
-                totalEnemies = 17;
+        
         System.arraycopy(BitConverter.getBytes(totalEnemies), 0, preBuffer, PRE_BUFFER_SIZE - 4, 4);
         spawnBufferSize = totalEnemies * 28;
         spawnBuffer = new byte[spawnBufferSize];

@@ -12,7 +12,7 @@ public class Enemy {
     private int relativeSpawnTime;
     private int relativeGemCount;
 
-    private boolean isLast17 = false;
+    private boolean isRepeat = false;
 
     public Enemy(int id, int d) {
         identifier = id;
@@ -67,8 +67,8 @@ public class Enemy {
         setRelativeGemCount(gems + getEnemyGems());
     }
 
-    public void setLast17(boolean flag) {
-        isLast17 = flag;
+    public void setRepeat(boolean flag) {
+        isRepeat = flag;
     }
 
     public void setDelay(int delay) {
@@ -121,7 +121,7 @@ public class Enemy {
         for(int k = Integer.toString(relativeSpawnTime).length(); k <= 12; k++) {
             s.append(' ');
         }
-        if(isLast17) s.append('\u2713');
+        if(isRepeat) s.append('\u2713');
         else s.append(' ');
         for(int l = 0; l <= 11; l++)
             s.append(' ');
