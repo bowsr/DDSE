@@ -7,14 +7,14 @@ import java.security.InvalidParameterException;
 public class Enemy {
 
     private int identifier;
-    private int delay;
+    private double delay;
 
-    private int relativeSpawnTime;
+    private double relativeSpawnTime;
     private int relativeGemCount;
 
     private boolean isRepeat = false;
 
-    public Enemy(int id, int d) {
+    public Enemy(int id, double d) {
         identifier = id;
         delay = d;
     }
@@ -43,15 +43,15 @@ public class Enemy {
         identifier = id;
     }
 
-    public int getDelay() {
+    public double getDelay() {
         return delay;
     }
 
-    public int getRelativeSpawnTime() {
+    public double getRelativeSpawnTime() {
         return relativeSpawnTime;
     }
 
-    public void setRelativeSpawnTime(int sec) {
+    public void setRelativeSpawnTime(double sec) {
         relativeSpawnTime = sec;
     }
 
@@ -71,7 +71,7 @@ public class Enemy {
         isRepeat = flag;
     }
 
-    public void setDelay(int delay) {
+    public void setDelay(double delay) {
         this.delay = delay;
     }
 
@@ -113,12 +113,12 @@ public class Enemy {
         for(int i = s.toString().length(); i <= 17; i++) {
             s.append(' ');
         }
-        s.append(delay);
-        for(int j = Integer.toString(delay).length(); j <= 9; j++) {
+        s.append(String.format("%.2f", delay));
+        for(int j = String.format("%.2f", delay).length(); j <= 9; j++) {
             s.append(' ');
         }
-        s.append(relativeSpawnTime);
-        for(int k = Integer.toString(relativeSpawnTime).length(); k <= 12; k++) {
+        s.append(String.format("%.2f", relativeSpawnTime));
+        for(int k = String.format("%.2f", relativeSpawnTime).length(); k <= 12; k++) {
             s.append(' ');
         }
         if(isRepeat) s.append('\u2713');

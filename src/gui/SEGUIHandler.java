@@ -173,7 +173,7 @@ public class SEGUIHandler {
         directory.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 
         entry = new SEPanel(new BorderLayout());
-        delayspin = new SESpinner(0, 0, 2000, 1);
+        delayspin = new SESpinner(0, 0, 2000, 0.02);
         delayspin.setPreferredSize(new Dimension(100, 12));
         entry.add(delayspin, BorderLayout.LINE_START);
         entry.add(addButton, BorderLayout.LINE_END);

@@ -105,8 +105,8 @@ public class SEButton extends JButton{
     }
 
     private void addAfter() {
-        int delay = (int) SEGUIHandler.instance.delayspin.getValue(),
-            index = SEGUIHandler.instance.list.getSelectedIndex();
+        double delay = (double) SEGUIHandler.instance.delayspin.getValue();
+        int index = SEGUIHandler.instance.list.getSelectedIndex();
         SECheckBox tmp;
         for(int i = 0; i < SEGUIHandler.instance.enemySelections.size(); i++) {
             tmp = SEGUIHandler.instance.enemySelections.get(i);
@@ -119,7 +119,7 @@ public class SEButton extends JButton{
     }
 
     private void addSelection() {
-        int delay = (int) SEGUIHandler.instance.delayspin.getValue();
+        double delay = (double) SEGUIHandler.instance.delayspin.getValue();
         SECheckBox tmp;
         for(int i = 0; i < SEGUIHandler.instance.enemySelections.size(); i++) {
             tmp = SEGUIHandler.instance.enemySelections.get(i);

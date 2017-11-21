@@ -12,11 +12,11 @@ public class SEListModel extends DefaultListModel<Enemy> {
         super();
     }
 
-    public void addEnemy(int enemy, int delay) {
+    public void addEnemy(int enemy, double delay) {
         addEnemy(getSize(), enemy, delay);
     }
 
-    public void addEnemy(int index, int enemy, int delay) {
+    public void addEnemy(int index, int enemy, double delay) {
         Enemy ed = new Enemy(enemy, delay);
 //        ed.setRelativeSpawnTime((getSize() > 0) ? (get(getSize() - 1).getRelativeSpawnTime() + delay) : delay);
         super.add(index, ed);
