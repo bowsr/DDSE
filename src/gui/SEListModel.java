@@ -32,12 +32,13 @@ public class SEListModel extends DefaultListModel<Enemy> {
     public void loadEnemyListFromFile() {
         clear();
         byte[] buffer = FileHandler.getSpawnBuffer(), tmp = new byte[4];
-        int id, delay;
+        int id;
+        double delay;
         for(int i = 0; i < buffer.length; i += 28) {
             System.arraycopy(buffer, i, tmp, 0, 4);
             id = BitConverter.toInt(tmp);
             System.arraycopy(buffer, i + 4, tmp, 0, 4);
-            delay = (int) BitConverter.toSingle(tmp);
+            delay = (double) BitConverter.toSingle(tmp);
             addEnemy(id, delay);
         }
     }
